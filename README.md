@@ -5,7 +5,7 @@ Use Gradle:
 ```compile 'com.kingfisherphuoc:easy_sharedpreference_library:1.0'```
 ### How to use?
 Before you do anything with `SharedPreference`, you have to initialize the library first. You can do it in your `Application` class or in your first `Activity's OnCreate`: 
-```
+```java
 /**
  * You have to initialize all your preference when open app.
  *
@@ -18,7 +18,7 @@ SharedPreferencesManager.init(this, true, "Pre1","Pre2");
 SharedPreferencesManager.init(this, true);
 ```
 After doing first config, you can use the `SharedPreferencesManager` at anywhere you want. You can check the sample project for more detail:
-```
+```java
 // Primitive type
 SharedPreferencesManager.getInstance().putValue("Test", 1); // save to default sharedPreference 
 SharedPreferencesManager.getInstance().getValue("Test", Integer.class);// get from default
