@@ -7,13 +7,15 @@ Use Gradle:
 Before you do anything with `SharedPreference`, you have to initialize the library first. You can do it in your `Application` class or in your first `Activity's OnCreate`: 
 ```
 /**
-     * You have to initialize all your preference when open app.
-     *
-     * @param context
-     * @param createDefaultPreference : true if we want to create default {@link SharedPreferences}
-     * @param names                   : list of custom {@link SharedPreferences}
-     */
-    public static synchronized void init(Context context, boolean createDefaultPreference, String... names)
+ * You have to initialize all your preference when open app.
+ *
+ * @param context
+ * @param createDefaultPreference : true if we want to create default {@link SharedPreferences}
+ * @param names                   : list of custom {@link SharedPreferences}
+ */
+SharedPreferencesManager.init(this, true, "Pre1","Pre2"); 
+// or using default sharedpreference name only
+SharedPreferencesManager.init(this, true);
 ```
 
 ### What's in the next version?
