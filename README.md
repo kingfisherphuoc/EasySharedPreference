@@ -17,8 +17,21 @@ SharedPreferencesManager.init(this, true, "Pre1","Pre2");
 // or using default sharedpreference name only
 SharedPreferencesManager.init(this, true);
 ```
+After doing first config, you can use the `SharedPreferencesManager` at anywhere you want. You can check the sample project for more detail:
+```
+// Primitive type
+SharedPreferencesManager.getInstance().putValue("Test", 1); // save to default sharedPreference 
+SharedPreferencesManager.getInstance().getValue("Test", Integer.class);// get from default
+// Save your custom object:
+SharedPreferencesManager.getInstance().putValue("testData", testGun);
+Gun gun = SharedPreferencesManager.getInstance().getValue("testData", Gun.class); 
+// Save list object to another SharedPreference
+SharedPreferencesManager.getInstance(AnotherPreferenceName).putValue("guns", guns);
+List<Gun> datas = SharedPreferencesManager.getInstance(AnotherPreferenceName).getValues("guns", Gun[].class); // get list object
+```
 
 ### What's in the next version?
+What are the things you want to have in this library? Contact me or create a new issue for it.
 
 ### License
 Copyright 2017 Doan Hong Phuoc
