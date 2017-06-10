@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Gun testGun = new Gun("test first!", 15);
         Gun gun = new Gun("a boss with a gun!", 2);
         SharedPreferencesManager.getInstance().putValue("testData", testGun);
-        SharedPreferencesManager.getInstance().putValue("person", new Person(gun, true, "Hell Boy"));
+        SharedPreferencesManager.getInstance().putValue("person", new Person(testGun, true, "Hell Boy"));
         // using another shared preference
         SharedPreferencesManager.getInstance(AnotherPreferenceName).putValue("fruits",
                 Arrays.asList(new String[]{"banana", "apple", "bean"}));
