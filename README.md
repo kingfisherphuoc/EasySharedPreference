@@ -3,7 +3,7 @@ an easy to use SharedPreference library. You can read/write your object to Share
 ### Installing
 Use Gradle:
 ```gradle
-compile 'com.kingfisherphuoc:easy_sharedpreference_library:1.1'
+compile 'com.kingfisherphuoc:easy_sharedpreference_library:1.2'
 ```
 ### How to use?
 Before you do anything with `SharedPreference`, you have to initialize the library first. You can do it in your `Application` class or in your first `Activity's OnCreate`: 
@@ -30,6 +30,10 @@ Gun gun = SharedPreferencesManager.getInstance().getValue("testData", Gun.class)
 // Save list object to another SharedPreference
 SharedPreferencesManager.getInstance(AnotherPreferenceName).putValue("guns", guns);
 List<Gun> datas = SharedPreferencesManager.getInstance(AnotherPreferenceName).getValues("guns", Gun[].class); // get list object
+// remove/clear value from sharedPreferences:
+SharedPreferencesManager.getInstance().clear(); //SharedPreferencesManager.getInstance().remove("test");
+// Print the log of all saved value from SharedPreferences:
+SharedPreferencesManager.getInstance().printAllKeyValues();
 ```
 
 ### What's in the next version?
