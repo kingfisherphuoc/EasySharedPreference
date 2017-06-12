@@ -2,7 +2,9 @@
 an easy to use SharedPreference library. You can read/write your object to SharedPreference easily with few lines of code.
 ### Installing
 Use Gradle:
-```compile 'com.kingfisherphuoc:easy_sharedpreference_library:1.0'```
+```gradle
+compile 'com.kingfisherphuoc:easy_sharedpreference_library:1.1'
+```
 ### How to use?
 Before you do anything with `SharedPreference`, you have to initialize the library first. You can do it in your `Application` class or in your first `Activity's OnCreate`: 
 ```java
