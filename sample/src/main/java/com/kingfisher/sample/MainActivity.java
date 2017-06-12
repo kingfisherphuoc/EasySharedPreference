@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 import com.kingfisher.easy_sharedpreference_library.SharedPreferencesManager;
 
@@ -13,6 +14,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static String AnotherPreferenceName = "my_test_preference";
+    TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,8 +22,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         SharedPreferencesManager.init(this, true, AnotherPreferenceName);
 
+        textView = (TextView) findViewById(R.id.tvLog);
         findViewById(R.id.btnSave).setOnClickListener(this);
         findViewById(R.id.btnLoadData).setOnClickListener(this);
+        findViewById(R.id.btnClear).setOnClickListener(this);
+        findViewById(R.id.btnPrint).setOnClickListener(this);
     }
 
     private void loadData() {
@@ -34,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         for (Gun gun1 : datas) {
             showLog(gun1.toString());
         }
+        textView.setText("Loaded! See the Logcat");
     }
 
     private void saveData() {
@@ -47,6 +53,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Arrays.asList(new String[]{"banana", "apple", "bean"}));
         List<Gun> guns = Arrays.asList(new Gun[]{gun, testGun});
         SharedPreferencesManager.getInstance(AnotherPreferenceName).putValue("guns", guns);
+        textView.setText("Saved! See the Logcat");
 
     }
 
@@ -62,6 +69,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btnLoadData:
                 loadData();
+                break;
+            case R.id.btnClear:
+                SharedPreferencesManager.getInstance().clear();
+                loadData();
+                break;
+            case R.id.btnPrint:
+                SharedPreferencesManager.getInstance().printAllKeyValues();
+                SharedPreferencesManager.getInstance(AnotherPreferenceName).printAllKeyValues();
                 break;
         }
     }

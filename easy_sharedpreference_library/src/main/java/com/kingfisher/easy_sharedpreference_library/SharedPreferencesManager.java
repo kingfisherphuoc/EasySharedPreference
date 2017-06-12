@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by kingfisher on 6/10/17.
@@ -147,6 +148,14 @@ public class SharedPreferencesManager {
         }
     }
 
+    /**
+     * Get List of object which is saved in {@link SharedPreferences}
+     *
+     * @param key
+     * @param clazz
+     * @param <T>
+     * @return
+     */
     public <T> List<T> getValues(String key, Class<T[]> clazz) {
         String json = sharedPreference.getString(key, "");
         if (TextUtils.isEmpty(json)) return null;
@@ -157,8 +166,31 @@ public class SharedPreferencesManager {
     }
 
 
-    private static void showLog(String s) {
-        Log.e(SharedPreferencesManager.class.getCanonicalName(), s);
+    /**
+     * remove a key/value pair from shared preference
+     *
+     * @param key
+     */
+    public void remove(String key) {
+        editor.remove(key).commit();
+    }
+
+    /**
+     * Clear all the {@link SharedPreferences}
+     */
+    public void clear() {
+        editor.clear().commit();
+    }
+
+    /**
+     * Log all the key/value pairs which are stored in the {@link SharedPreferences}
+     */
+    public void printAllKeyValues() {
+        Map<String, ?> allEntries = sharedPreference.getAll();
+        for (Map.Entry<String, ?> entry : allEntries.entrySet()) {
+            if (entry == null || entry.getValue() == null) continue;
+            Log.e("SharedPreferenceManager", entry.getKey() + ": " + entry.getValue().toString());
+        }
     }
 
 
