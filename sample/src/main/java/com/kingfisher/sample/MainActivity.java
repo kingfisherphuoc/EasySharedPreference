@@ -34,6 +34,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         showLog("Test first: " + SharedPreferencesManager.getInstance().getValue("testData", Gun.class));
         showLog("Person: " + SharedPreferencesManager.getInstance().getValue("person", Person.class));
         showLog("Fruits: " + SharedPreferencesManager.getInstance(AnotherPreferenceName).getValues("fruits", String[].class));
+        showLog("Ninja: " + SharedPreferencesManager.getInstance().getValue("Ninja", String.class, "Never saved before!!"));
+
         List<Gun> datas = SharedPreferencesManager.getInstance(AnotherPreferenceName).getValues("guns", Gun[].class);
         if (datas == null) return;
         for (Gun gun1 : datas) {

@@ -149,6 +149,22 @@ public class SharedPreferencesManager {
     }
 
     /**
+     * Get value which is saved with a default value
+     *
+     * @param key
+     * @param type
+     * @param <T>  default value to be return if key is not added before
+     * @return
+     */
+    public <T> T getValue(String key, Class<T> type, T defaultValue) {
+        if (sharedPreference.contains(key)) {
+            return getValue(key, type);
+        } else {
+            return defaultValue;
+        }
+    }
+
+    /**
      * Get List of object which is saved in {@link SharedPreferences}
      *
      * @param key
@@ -193,5 +209,13 @@ public class SharedPreferencesManager {
         }
     }
 
+    /**
+     * Get {@link SharedPreferences} of this manager if exists.
+     *
+     * @return
+     */
+    public SharedPreferences getSharedPreference() {
+        return this.sharedPreference;
+    }
 
 }
