@@ -36,6 +36,12 @@ List<Gun> datas = SharedPreferencesManager.getInstance(AnotherPreferenceName).ge
 SharedPreferencesManager.getInstance().clear(); //SharedPreferencesManager.getInstance().remove("test");
 // Print the log of all saved value from SharedPreferences:
 SharedPreferencesManager.getInstance().printAllKeyValues();
+//get All keys from SharedPreferences 
+ Map<String, ?> allEntries = SharedPreferencesManager.getInstance().getAllKeys();
+ for (Map.Entry<String, ?> entry : allEntries.entrySet()) {
+      if (entry == null || entry.getValue() == null) continue;
+       Log.e("SharedPreferenceManager", entry.getKey() + ": " + entry.getValue().toString());
+     }
 // you can also get the SharedPreference to use if you want to interact directly with it
 SharedPreferencesManager.getInstance().getSharedPreference();
 ```

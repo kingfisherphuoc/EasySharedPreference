@@ -208,7 +208,12 @@ public class SharedPreferencesManager {
             Log.e("SharedPreferenceManager", entry.getKey() + ": " + entry.getValue().toString());
         }
     }
-
+    /**
+     *  give all the keys which are stored in the {@link SharedPreferences}
+     */
+    public Map<String,?> getAllKeys(){
+        return sharedPreference.getAll();
+    }
     /**
      * Get {@link SharedPreferences} of this manager if exists.
      *
